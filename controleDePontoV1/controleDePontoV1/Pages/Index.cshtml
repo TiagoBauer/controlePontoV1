@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center" style="top: 50%">
+    <h1 class="display-4">Welcome</h1>
+    <form method="get">
+        <div>
+            <LABEL asp-for="logon.codigo"></LABEL>
+            <BR />
+            <INPUT type="text" ID="USERIN" asp-for="logon.codigo" ad/>
+            <BR />
+            <LABEL asp-for="logon.password"></LABEL>
+            <BR />
+            <INPUT type="text" ID="PASSIN"  asp-for="logon.password"/>
+            <BR />
+            <BR />
+            <button onclick="pontoLogon()"> Login </button>
+        </div>
+    </form>
+</div>

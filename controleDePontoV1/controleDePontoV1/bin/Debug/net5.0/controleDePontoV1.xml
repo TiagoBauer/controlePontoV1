@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>controleDePontoV1</name>
+    </assembly>
+    <members>
+        <member name="M:controleDePontoV1.Controller.controlePontoController.SetPapeis(controleDePontoV1.Models.Papel)">
+            <summary>
+            Inclui papéis na corporação
+            </summary>
+            <param name="papeis"></param>
+            <returns> Papel incluído </returns>
+            
+        </member>
+    </members>
+</doc>
