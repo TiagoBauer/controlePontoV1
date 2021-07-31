@@ -1,0 +1,82 @@
+﻿@page
+@model controleDePontoV1.Pages.PontoPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ControleApontamento[0].codigo_Projeto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ControleApontamento[0].codigo_Equipe)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ControleApontamento[0].codigo_Colaborador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ControleApontamento[0].dia_Marcao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ControleApontamento[0].dia_Fim)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <a class="btn btn-primary" asp-page="./Edit" asp-page-handler="OnGetAsync"
+       asp-route-projeto=0
+       asp-route-equipe=0
+       asp-route-colaborador=0
+       asp-route-diaMarcacao=null
+       asp-route-backToMenu=true>Back to Menu</a>
+    <tbody>
+        @foreach (var item in Model.ControleApontamento)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigo_Projeto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigo_Equipe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigo_Colaborador)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dia_Marcao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dia_Fim)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-page-handler="OnGetAsync"
+                       asp-route-projeto="@item.codigo_Projeto"
+                       asp-route-equipe="@item.codigo_Equipe"
+                       asp-route-colaborador="@item.codigo_Colaborador"
+                       asp-route-diaMarcacao="@item.dia_Marcao"
+                       asp-route-backToMenu=2>Edit</a> |
+                    <a asp-page="./Details" asp-page-handler="OnGetAsync"
+                       asp-route-projeto="@item.codigo_Projeto"
+                       asp-route-equipe="@item.codigo_Equipe"
+                       asp-route-colaborador="@item.codigo_Colaborador"
+                       asp-route-diaMarcacao="@item.dia_Marcao">Details</a> |
+                    <a asp-page="./Delete" asp-page-handler="OnGetAsync"
+                       asp-route-projeto="@item.codigo_Projeto"
+                       asp-route-equipe="@item.codigo_Equipe"
+                       asp-route-colaborador="@item.codigo_Colaborador"
+                       asp-route-diaMarcacao="@item.dia_Marcao"> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

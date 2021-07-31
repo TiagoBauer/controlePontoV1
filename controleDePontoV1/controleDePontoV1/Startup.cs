@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -28,6 +29,7 @@ namespace controleDePontoV1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<HttpClient>();
             services.AddRazorPages();
             services.AddControllers();
             services.AddSwaggerGen(c =>

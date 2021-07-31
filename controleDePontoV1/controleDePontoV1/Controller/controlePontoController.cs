@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,7 +17,6 @@ namespace controleDePontoV1.Controller
     public class controlePontoController : ControllerBase
     {
         private readonly PontoDBContext _pontoDBContext;
-
         public controlePontoController(PontoDBContext pontoDBContext)
         {
             _pontoDBContext = pontoDBContext;
@@ -98,5 +99,63 @@ namespace controleDePontoV1.Controller
                 data = colaborador
             });
         }
+
+        [HttpPost]
+        [Route("api/returnWork")]
+        public async Task<ActionResult> returnWorkHours(int codigoProjeto, int codigoEquipe, int codigoColaborador, DateTime dataInicial, DateTime DataFinal)
+        {
+            string query = "SELECT codigo_Projeto, codigo_Equipe, codigo_colaborador, dateTime, dia_Fim FROM controleApontamento ";
+            string where = "";
+            if ((codigoProjeto != 0) && (codigoProjeto != null))
+            {
+                where += " AND codigo_Projeto = " + codigoProjeto;
+            }
+
+            if ((codigoEquipe != 0) && (codigoEquipe != null))
+            {
+                where += " AND codigo_Equipe = " + codigoEquipe;
+            }
+
+            if ((codigoColaborador != 0) && (codigoColaborador != null))
+            {
+                where += " AND codigo_Colaborador = " + codigoColaborador;
+            }
+
+            if((dataInicial != null) && (dataInicial != DateTime.MinValue))
+            {
+                where += " AND dateTime >= '" + dataInicial + "'";
+            }
+
+            if ((DataFinal != null) && (DataFinal != DateTime.MinValue))
+            {
+                where += " AND dia_Fim <= '" + DataFinal + "'";
+            }
+
+            if(where != "")
+            {
+                query += " WHERE " + where.Substring(4, (where.Length-4));
+            }
+                
+            List<ControleApontamento> result = await _pontoDBContext.controleApontamento
+                                                                     .FromSqlRaw(query)
+                                                                     .ToListAsync();
+            if(result.Count > 0)
+            {
+                return Ok(new
+                {
+                    success = true,
+                    data = result
+                });
+            } else
+            {
+                return Ok(new
+                {
+                    success = false,
+                    data = result
+                });
+            }
+            
+        }
+
     }
 }

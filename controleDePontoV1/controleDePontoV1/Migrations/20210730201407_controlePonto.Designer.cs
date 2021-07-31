@@ -10,7 +10,7 @@ using controleDePontoV1.Context;
 namespace controleDePontoV1.Migrations
 {
     [DbContext(typeof(PontoDBContext))]
-    [Migration("20210729231951_controlePonto")]
+    [Migration("20210730201407_controlePonto")]
     partial class controlePonto
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

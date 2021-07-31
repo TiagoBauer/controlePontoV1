@@ -1,0 +1,64 @@
+﻿@page
+@model controleDePontoV1.Pages.ColaboradorPage.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Colaborador</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Colaborador.codigo" class="control-label"></label>
+                <input asp-for="Colaborador.codigo" class="form-control" />
+                <span asp-validation-for="Colaborador.codigo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colaborador.active" class="control-label"></label>
+                <input asp-for="Colaborador.active" class="form-control" />
+                <span asp-validation-for="Colaborador.active" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colaborador.nome" class="control-label"></label>
+                <input asp-for="Colaborador.nome" class="form-control" />
+                <span asp-validation-for="Colaborador.nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colaborador.sobreNome" class="control-label"></label>
+                <input asp-for="Colaborador.sobreNome" class="form-control" />
+                <span asp-validation-for="Colaborador.sobreNome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colaborador.papel" class="control-label"></label>
+                <input asp-for="Colaborador.papel" class="form-control" />
+                <span asp-validation-for="Colaborador.papel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colaborador.equipe" class="control-label"></label>
+                <input asp-for="Colaborador.equipe" class="form-control" />
+                <span asp-validation-for="Colaborador.equipe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Colaborador.password" class="control-label"></label>
+                <input asp-for="Colaborador.password" class="form-control" />
+                <span asp-validation-for="Colaborador.password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

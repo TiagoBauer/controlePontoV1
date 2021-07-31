@@ -1,23 +1,23 @@
 ﻿@page
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
 }
 
 <div class="text-center" style="top: 50%">
-    <h1 class="display-4">Welcome</h1>
-    <form method="get">
+    <h1 class="display-4">Project Pointer</h1>
         <div>
-            <LABEL asp-for="logon.codigo"></LABEL>
-            <BR />
-            <INPUT type="text" ID="USERIN" asp-for="logon.codigo" ad/>
-            <BR />
-            <LABEL asp-for="logon.password"></LABEL>
-            <BR />
-            <INPUT type="text" ID="PASSIN"  asp-for="logon.password"/>
-            <BR />
-            <BR />
-            <button onclick="pontoLogon()"> Login </button>
+            <form method="post">
+                <LABEL asp-for="logon.codigo"></LABEL>
+                <BR />
+                <INPUT type="text" ID="USERIN" asp-for="logon.codigo" ad />
+                <BR />
+                <LABEL asp-for="logon.password"></LABEL>
+                <BR />
+                <INPUT type="text" ID="PASSIN" asp-for="logon.password" />
+                <BR />
+                <BR />
+                <input type="submit" class="btn btn-primary" value="login" />
+            </form>
         </div>
-    </form>
 </div>

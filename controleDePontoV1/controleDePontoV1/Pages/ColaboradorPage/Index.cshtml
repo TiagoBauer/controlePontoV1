@@ -1,0 +1,62 @@
+﻿@page
+@model controleDePontoV1.Pages.ColaboradorPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Colaborador[0].active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colaborador[0].nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colaborador[0].sobreNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colaborador[0].papel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Colaborador[0].equipe)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <a class="btn btn-primary" asp-page="./Edit" asp-route-id=0 asp-route-backToMenu=true>Back to Menu</a>
+    <tbody>
+        @foreach (var item in Model.Colaborador)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sobreNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.papel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.equipe)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.codigo" asp-route-backToMenu=false>Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.codigo">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.codigo">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

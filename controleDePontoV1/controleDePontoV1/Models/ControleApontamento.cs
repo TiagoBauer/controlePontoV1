@@ -17,7 +17,6 @@ namespace controleDePontoV1.Models
         public int codigo_Colaborador { get; set; }
         [Key]
         public DateTime dia_Marcao { get; set; }
-        [Key]
         public DateTime dia_Fim { get; set; }
     }
 }

@@ -1,0 +1,40 @@
+﻿@page
+@model controleDePontoV1.Pages.ProjetoPage.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Projeto[0].descrição)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <a class="btn btn-primary" asp-page="./Edit" asp-route-id=0 asp-route-backToMenu=true>Back to Menu</a>
+    <tbody>
+        @foreach (var item in Model.Projeto)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descrição)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.codigo">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.codigo">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.codigo">Delete</a>
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
