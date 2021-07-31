@@ -8,6 +8,7 @@ Passos para executar o sistema:
 ![image](https://user-images.githubusercontent.com/31293561/127750567-71ca827a-8010-4b21-b375-3a96c8bacf66.png)
   
   Logo em seguida é possivel criar um usuário de logon utilizando o mesmo procedimento porem na pasta de segurança, e selecionando a opção Novo > Usuário...
+  
 ![image](https://user-images.githubusercontent.com/31293561/127750563-ed6ba8d5-e271-4925-9734-25c6d7826175.png)
 
 2# Configurar as rota dos serviços e caminho do banco
