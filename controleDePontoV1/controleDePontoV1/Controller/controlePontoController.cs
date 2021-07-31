@@ -3,11 +3,14 @@ using controleDePontoV1.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace controleDePontoV1.Controller
@@ -22,6 +25,12 @@ namespace controleDePontoV1.Controller
             _pontoDBContext = pontoDBContext;
         }
 
+        /// <summary>
+        /// Gera a validação dos dados de logon do usuário (user[código] e senha[password]
+        /// </summary>
+        /// <param name="logon"></param>
+        /// <returns> Logon realizado </returns>
+        /// 
         [HttpGet]
         [Route("api/logon")]
         public async Task<IActionResult> GetLogon(int codigo, string password)
@@ -71,7 +80,12 @@ namespace controleDePontoV1.Controller
                 data = papeis
             });
         }
-
+        /// <summary>
+        /// Inclui equipes na corporação
+        /// </summary>
+        /// <param name="equipes"></param>
+        /// <returns> Equipe incluída </returns>
+        /// 
         [HttpPost]
         [Route("api/equipe")]
         public async Task<IActionResult> SetEquipe(Equipe equipes)
@@ -86,6 +100,12 @@ namespace controleDePontoV1.Controller
             });
         }
 
+        /// <summary>
+        /// Inclui colaboradores na corporação
+        /// </summary>
+        /// <param name="colaborador"></param>
+        /// <returns> Colaborador incluído </returns>
+        /// 
         [HttpPost]
         [Route("api/colaborador")]
         public async Task<IActionResult> SetPapeis(Colaborador colaborador)
@@ -99,8 +119,13 @@ namespace controleDePontoV1.Controller
                 data = colaborador
             });
         }
-
-        [HttpPost]
+        /// <summary>
+        /// Retorna as horas marcações de dias feitos dos projetos
+        /// </summary>
+        /// <param name="apontamento"></param>
+        /// <returns> Apontamentos coletados </returns>
+        /// 
+        [HttpGet]
         [Route("api/returnWork")]
         public async Task<ActionResult> returnWorkHours(int codigoProjeto, int codigoEquipe, int codigoColaborador, DateTime dataInicial, DateTime DataFinal)
         {
@@ -139,22 +164,8 @@ namespace controleDePontoV1.Controller
             List<ControleApontamento> result = await _pontoDBContext.controleApontamento
                                                                      .FromSqlRaw(query)
                                                                      .ToListAsync();
-            if(result.Count > 0)
-            {
-                return Ok(new
-                {
-                    success = true,
-                    data = result
-                });
-            } else
-            {
-                return Ok(new
-                {
-                    success = false,
-                    data = result
-                });
-            }
-            
+
+            return Ok(result);
         }
 
     }

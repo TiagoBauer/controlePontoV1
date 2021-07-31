@@ -337,3 +337,10 @@ D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\obj\Debug\net
 D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\obj\Debug\net5.0\Razor\Pages\ProjetoPage\Details.cshtml.g.cs
 D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\obj\Debug\net5.0\Razor\Pages\ProjetoPage\Edit.cshtml.g.cs
 D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\obj\Debug\net5.0\Razor\Pages\ProjetoPage\Index.cshtml.g.cs
+D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\obj\Debug\net5.0\Razor\Pages\relatorioApontamento\Index.cshtml.g.cs
+D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\bin\Debug\net5.0\System.Web.Razor.dll
+D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\bin\Debug\net5.0\System.Web.Helpers.dll
+D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
+D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
+D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\bin\Debug\net5.0\System.Web.WebPages.dll
+D:\gitProjects\controlePontoV1\controleDePontoV1\controleDePontoV1\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll

@@ -1,0 +1,51 @@
+﻿@page
+@model controleDePontoV1.Pages.relatorioApontamento.IndexModel
+@{
+}
+<h1>Generate</h1>
+
+<h4>Report</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="apt.codigo_Projeto" class="control-label"></label>
+                <input asp-for="apt.codigo_Projeto" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="apt.codigo_Equipe" class="control-label"></label>
+                <input asp-for="apt.codigo_Equipe" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="apt.codigo_Colaborador" class="control-label"></label>
+                <input asp-for="apt.codigo_Colaborador" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="apt.dia_Inicial" class="control-label"></label>
+                <input asp-for="apt.dia_Inicial" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="apt.dia_final" class="control-label"></label>
+                <input asp-for="apt.dia_final" class="form-control" />
+            </div>
+            <input type="submit" 
+                   asp-route-projeto=apt.codigo_Projeto
+                   asp-route-equipe=apt.codigo_Equipe
+                   asp-route-colaborador=apt.codigo_Colaborador
+                   asp-route-dataInicio=apt.dia_Inicial
+                   asp-route-dataFim=apt.dia_Final
+                   asp-route-backToMenu=false class="btn btn-primary" value="Execute" />
+            <br />
+            <br />
+            <input type="submit" asp-route-projeto=apt.codigo_Projeto
+                   asp-route-equipe=apt.codigo_Equipe
+                   asp-route-colaborador=apt.codigo_Colaborador
+                   asp-route-dataInicio=apt.dia_Inicial
+                   asp-route-dataFim=apt.dia_Final
+                   asp-route-backToMenu=true class="btn btn-primary" value="Back to Menu" />
+        </form>
+    </div>
+</div>

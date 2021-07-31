@@ -36,6 +36,10 @@ namespace controleDePontoV1.Pages.Menu
             {
                 return Redirect("~/PontoPage");
             }
+            else if(newPage == "Relatorio de Apontamentos")
+            {
+                return Redirect("~/relatorioApontamento");
+            }
             else
             {
                 return Redirect("~/Menu");

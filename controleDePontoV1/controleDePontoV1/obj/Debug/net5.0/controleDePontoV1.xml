@@ -4,12 +4,44 @@
         <name>controleDePontoV1</name>
     </assembly>
     <members>
+        <member name="M:controleDePontoV1.Controller.controlePontoController.GetLogon(System.Int32,System.String)">
+            <summary>
+            Gera a validação dos dados de logon do usuário (user[código] e senha[password]
+            </summary>
+            <param name="logon"></param>
+            <returns> Logon realizado </returns>
+            
+        </member>
         <member name="M:controleDePontoV1.Controller.controlePontoController.SetPapeis(controleDePontoV1.Models.Papel)">
             <summary>
             Inclui papéis na corporação
             </summary>
             <param name="papeis"></param>
             <returns> Papel incluído </returns>
+            
+        </member>
+        <member name="M:controleDePontoV1.Controller.controlePontoController.SetEquipe(controleDePontoV1.Models.Equipe)">
+            <summary>
+            Inclui equipes na corporação
+            </summary>
+            <param name="equipes"></param>
+            <returns> Equipe incluída </returns>
+            
+        </member>
+        <member name="M:controleDePontoV1.Controller.controlePontoController.SetPapeis(controleDePontoV1.Models.Colaborador)">
+            <summary>
+            Inclui colaboradores na corporação
+            </summary>
+            <param name="colaborador"></param>
+            <returns> Colaborador incluído </returns>
+            
+        </member>
+        <member name="M:controleDePontoV1.Controller.controlePontoController.returnWorkHours(System.Int32,System.Int32,System.Int32,System.DateTime,System.DateTime)">
+            <summary>
+            Retorna as horas marcações de dias feitos dos projetos
+            </summary>
+            <param name="apontamento"></param>
+            <returns> Apontamentos coletados </returns>
             
         </member>
     </members>
