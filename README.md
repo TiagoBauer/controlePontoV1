@@ -5,10 +5,10 @@ O desenvolvimento permite cadstrar Papeis, Equipes, Colaboradores, Projetos e Ap
 Passos para executar o sistema:
 1# Configurar a estrutura do banco (Usado no desenvolvimento Sql Server 18)
   No Sql server é preciso criar a database "controle_Ponto" utilizando a opção de mouse, na pasta Database do servidor e selecionar a opção criar Nova database...
-  ![image](https://user-images.githubusercontent.com/31293561/127750567-71ca827a-8010-4b21-b375-3a96c8bacf66.png)
+![image](https://user-images.githubusercontent.com/31293561/127750567-71ca827a-8010-4b21-b375-3a96c8bacf66.png)
   
   Logo em seguida é possivel criar um usuário de logon utilizando o mesmo procedimento porem na pasta de segurança, e selecionando a opção Novo > Usuário...
-  ![image](https://user-images.githubusercontent.com/31293561/127750563-ed6ba8d5-e271-4925-9734-25c6d7826175.png)
+![image](https://user-images.githubusercontent.com/31293561/127750563-ed6ba8d5-e271-4925-9734-25c6d7826175.png)
 
 2# Configurar as rota dos serviços e caminho do banco
   É preciso alterar o arquivo appSettings.json. Neste arquivo é preciso indicar qual o servidor, database, user, password usado do banco.
@@ -24,10 +24,10 @@ Passos para executar o sistema:
   
   Nele basta colocar os seguintes comandos:
     * add-migration controlePonto  
-    ![image](https://user-images.githubusercontent.com/31293561/127750647-42aa790e-abb8-4dce-868e-3735d0979976.png)
+![image](https://user-images.githubusercontent.com/31293561/127750647-42aa790e-abb8-4dce-868e-3735d0979976.png)
   
     * update-database 
-    ![image](https://user-images.githubusercontent.com/31293561/127750654-af5882f4-8d29-4d4c-b387-d4b676b43e1c.png)
+![image](https://user-images.githubusercontent.com/31293561/127750654-af5882f4-8d29-4d4c-b387-d4b676b43e1c.png)
 
 Assim que realizado estes serviços o sistema estará disponivel.
   
