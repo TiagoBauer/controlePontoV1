@@ -24,6 +24,7 @@ Passos para executar o sistema:
   ![image](https://user-images.githubusercontent.com/31293561/127750613-4e99b70a-0ae7-4bdd-82db-68262c6b07b1.png)
   
   Nele basta colocar os seguintes comandos:
+  
     * add-migration controlePonto  
 ![image](https://user-images.githubusercontent.com/31293561/127750647-42aa790e-abb8-4dce-868e-3735d0979976.png)
   
