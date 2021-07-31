@@ -129,7 +129,7 @@ namespace controleDePontoV1.Controller
         [Route("api/returnWork")]
         public async Task<ActionResult> returnWorkHours(int codigoProjeto, int codigoEquipe, int codigoColaborador, DateTime dataInicial, DateTime DataFinal)
         {
-            string query = "SELECT codigo_Projeto, codigo_Equipe, codigo_colaborador, dateTime, dia_Fim FROM controleApontamento ";
+            string query = "SELECT codigo_Projeto, codigo_Equipe, codigo_Colaborador, dateTime, dia_Fim FROM controleApontamento ";
             string where = "";
             if ((codigoProjeto != 0) && (codigoProjeto != null))
             {
@@ -160,7 +160,8 @@ namespace controleDePontoV1.Controller
             {
                 query += " WHERE " + where.Substring(4, (where.Length-4));
             }
-                
+            query += " ORDER BY codigo_Projeto, codigo_Equipe";
+
             List<ControleApontamento> result = await _pontoDBContext.controleApontamento
                                                                      .FromSqlRaw(query)
                                                                      .ToListAsync();

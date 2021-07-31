@@ -31,21 +31,52 @@
                 <label asp-for="apt.dia_final" class="control-label"></label>
                 <input asp-for="apt.dia_final" class="form-control" />
             </div>
-            <input type="submit" 
-                   asp-route-projeto=apt.codigo_Projeto
-                   asp-route-equipe=apt.codigo_Equipe
-                   asp-route-colaborador=apt.codigo_Colaborador
-                   asp-route-dataInicio=apt.dia_Inicial
-                   asp-route-dataFim=apt.dia_Final
-                   asp-route-backToMenu=false class="btn btn-primary" value="Execute" />
+            <input type="submit"asp-route-backToMenu=false class="btn btn-primary" value="Execute" />
             <br />
             <br />
-            <input type="submit" asp-route-projeto=apt.codigo_Projeto
-                   asp-route-equipe=apt.codigo_Equipe
-                   asp-route-colaborador=apt.codigo_Colaborador
-                   asp-route-dataInicio=apt.dia_Inicial
-                   asp-route-dataFim=apt.dia_Final
-                   asp-route-backToMenu=true class="btn btn-primary" value="Back to Menu" />
+            <input type="submit" asp-route-backToMenu=true class="btn btn-primary" value="Back to Menu" />
         </form>
+
+        <br />
+        <br />
+        @if (Model.reportApontamento != null)
+        {
+            <h1> Result </h1>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.reportApontamento[0].codigo_Projeto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.reportApontamento[0].codigo_Equipe)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.reportApontamento[0].horTrab)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.reportApontamento[0].minTrab)
+                    </th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.reportApontamento)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.codigo_Projeto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.codigo_Equipe)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.horTrab)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.minTrab)
+                        </td>
+                    </tr>
+
+                }
+                </table>
+            }
     </div>
 </div>

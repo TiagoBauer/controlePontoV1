@@ -24,9 +24,10 @@ namespace controleDePontoV1.Pages.relatorioApontamento
         private HttpClient _client;
 
         public IList<ControleApontamento> apontamento { get; set; }
-
+        public IList<RelatorioApt> reportApontamento { get; set; }
 
         public Apontamento apt { get; set; }
+        public RelatorioApt rApt { get; set; }
 
         public class Apontamento
         {
@@ -43,6 +44,18 @@ namespace controleDePontoV1.Pages.relatorioApontamento
 
         }
 
+        public class RelatorioApt
+        {
+            [Display(Name = "Projeto")]
+            public int codigo_Projeto { get; set; }
+            [Display(Name = "Equipe")]
+            public int codigo_Equipe { get; set; }
+            [Display(Name = "Minutos trabalhadas")]
+            public int minTrab { get; set; }
+            [Display(Name = "Minutos trabalhadas")]
+            public int horTrab { get; set; }
+        }
+
         public IndexModel(HttpClient httpclient)
         {
             _client = httpclient;
@@ -52,7 +65,7 @@ namespace controleDePontoV1.Pages.relatorioApontamento
 
         }
 
-        public async Task<IActionResult> OnPostAsync(int projeto, int equipe, int colaborador, DateTime dataInicio, DateTime dataFim, bool backToMenu)
+        public async Task<IActionResult> OnPostAsync(bool backToMenu)
         {
             if (backToMenu)
             {
@@ -65,28 +78,29 @@ namespace controleDePontoV1.Pages.relatorioApontamento
 
             try
             {
+                reportApontamento = new List<RelatorioApt>();
                 string baseUrl = configuration.GetConnectionString("baseUrl");
                 string url = "";
 
-                if (projeto > 0)
+                if (apt.codigo_Projeto > 0)
                 {
-                    url += "&codigo_Projeto=" + projeto;
+                    url += "&codigoProjeto=" + apt.codigo_Projeto;
                 }
-                if (equipe > 0)
+                if (apt.codigo_Equipe > 0)
                 {
-                    url += "&codigo_Equipe=" + equipe;
+                    url += "&codigoEquipe=" + apt.codigo_Equipe;
                 }
-                if (colaborador > 0)
+                if (apt.codigo_Colaborador > 0)
                 {
-                    url += "&codigo_Colaborador=" + colaborador;
+                    url += "&codigoColaborador=" + apt.codigo_Colaborador;
                 }
-                if (dataInicio > DateTime.MinValue)
+                if (apt.dia_Inicial > DateTime.MinValue)
                 {
-                    url += "&dateTime=" + dataInicio;
+                    url += "&dataInicial=" + apt.dia_Inicial;
                 }
-                if (dataFim > DateTime.MinValue)
+                if (apt.dia_final > DateTime.MinValue)
                 {
-                    url += "&dia_Fim=" + dataFim;
+                    url += "&DataFinal=" + apt.dia_final;
                 }
 
                 if (url != "")
@@ -103,12 +117,67 @@ namespace controleDePontoV1.Pages.relatorioApontamento
 
                 apontamento = JsonConvert.DeserializeObject<List<ControleApontamento>>(result);
 
+                reportApontamento = returnTotalHoursProjetcTeam(apontamento);
+
                 return Page();
             }
             catch (Exception)
             {
                 return Page();
             }
+        }
+        public IList<RelatorioApt> returnTotalHoursProjetcTeam(IList<ControleApontamento> apt)
+        {
+            var oldProject = 0;
+            var oldTeam = 0;
+            RelatorioApt temp = null;
+            IList<RelatorioApt> newList = new List<RelatorioApt>();
+            foreach (var cP in apt)
+            {
+
+                if ((cP.codigo_Projeto != oldProject) || (cP.codigo_Equipe != oldTeam))
+                {
+                    temp = new RelatorioApt();
+                    temp.codigo_Projeto = cP.codigo_Projeto;
+                    temp.codigo_Equipe = cP.codigo_Equipe;
+                    if (cP.dia_Fim == DateTime.MinValue)
+                    {
+                        cP.dia_Fim = new DateTime();
+                    }
+                    TimeSpan ts = cP.dia_Fim - cP.dia_Marcao;
+                    temp.minTrab = (int) (ts.Minutes);
+                    temp.horTrab = (int) ts.TotalHours;
+                    newList.Add(temp);
+                }
+                else
+                {
+
+                    foreach (var nL in newList.Where(w =>
+                                             w.codigo_Projeto == cP.codigo_Projeto &&
+                                             w.codigo_Equipe == cP.codigo_Equipe))
+                    {
+                        if (cP.dia_Fim == DateTime.MinValue)
+                        {
+                            cP.dia_Fim = new DateTime();
+                        }
+                        TimeSpan ts = cP.dia_Fim - cP.dia_Marcao;
+                        nL.minTrab += (int)(ts.Minutes);
+                        if(nL.minTrab >= 60)
+                        {
+                            nL.horTrab++;
+                            nL.minTrab -= 60;
+                        }
+                        nL.horTrab += (int)ts.TotalHours;
+                    };
+
+                } 
+
+                
+                oldProject = cP.codigo_Projeto;
+                oldTeam = cP.codigo_Equipe;
+            }            
+
+            return newList;
         }
     }
 }
