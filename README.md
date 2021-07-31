@@ -5,6 +5,7 @@ O desenvolvimento permite cadstrar Papeis, Equipes, Colaboradores, Projetos e Ap
 Passos para executar o sistema:
 1# Configurar a estrutura do banco (Usado no desenvolvimento Sql Server 18)
   No Sql server é preciso criar a database "controle_Ponto" utilizando a opção de mouse, na pasta Database do servidor e selecionar a opção criar Nova database...
+  
 ![image](https://user-images.githubusercontent.com/31293561/127750567-71ca827a-8010-4b21-b375-3a96c8bacf66.png)
   
   Logo em seguida é possivel criar um usuário de logon utilizando o mesmo procedimento porem na pasta de segurança, e selecionando a opção Novo > Usuário...
